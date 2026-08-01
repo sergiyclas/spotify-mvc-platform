@@ -1,29 +1,37 @@
-# Environment and dependencies
-.venv/
-.env
+# Byte-compiled / optimized
 __pycache__/
 *.py[cod]
 *$py.class
 
+# Environments
+.env
+.venv/
+venv/
+env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
 # IDE
-.vscode/
 .idea/
-*.swp
-*.swo
-*~
+.vscode/
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Project specific
+# Local data
 *.db
-*.sqlite
 *.sqlite3
-logs/
-.coverage
-htmlcov/
+.gradio/
 
-# UV
-.uv-cache/
-uv.lock
+*.egg-info/
+spotify.db
