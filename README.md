@@ -40,24 +40,44 @@ API over the same service layer, with a CLI for data import and statistics.
 
 ![Demo](docs/demo.gif)
 
-*Home, songs, playlists, statistics and the generated OpenAPI documentation.*
+*Home, songs, the create form, playlists, a playlist detail page, statistics and the generated API docs.*
 
 **[▶ Watch the full video](docs/demo.mp4)**
 
 </div>
 
 <details>
-<summary><b>More screenshots</b></summary>
+<summary><b>Screenshots of every page</b></summary>
 
 <br>
 
-**Home**
+**Home** — summary counters pulled from the service layer
 
-![Home](docs/screenshot-home.png)
+![Home](docs/01-home.png)
 
-**Statistics**
+**Songs** — the full list with edit and delete actions
 
-![Statistics](docs/screenshot-statistics.png)
+![Songs](docs/02-songs.png)
+
+**Song form** — used for both creating and editing
+
+![Song form](docs/03-song-form.png)
+
+**Playlists** — cards showing the owner and the track count
+
+![Playlists](docs/04-playlists.png)
+
+**Playlist detail** — its tracks, plus a picker to attach another song
+
+![Playlist detail](docs/05-playlist-detail.png)
+
+**Statistics** — totals, the subscription breakdown and the average playlist size
+
+![Statistics](docs/06-statistics.png)
+
+**API documentation** — OpenAPI generated from the same routes
+
+![API docs](docs/07-api-docs.png)
 
 </details>
 
@@ -87,30 +107,37 @@ Open **http://localhost:8000** for the web interface, or **http://localhost:8000
 
 ## ✨ Features
 
-### One service layer, two interfaces
+### 🔀 One service layer, two interfaces
 
-The HTML pages and the JSON API call the same `SpotifyService`. A change in a business rule takes
-effect in both without being written twice.
+- HTML pages and the JSON API both call the same `SpotifyService`
+- A change to a business rule takes effect in both without being written twice
+- The CLI uses that same layer, so there are three entry points and one implementation
 
-### Layers that are actually separated
+### 🧱 Layers that are actually separated
 
-Presentation never touches the database: routes call services, services call repositories, and only
-repositories know about SQLAlchemy. The layer boundaries are visible in the directory structure.
+- Presentation never touches the database: routes call services, services call repositories
+- Only repositories know about SQLAlchemy
+- The boundaries are visible in the directory structure, not just in a diagram
 
-### Subscription types as polymorphism
+### 💳 Subscription types as polymorphism
 
-Free, Student and Premium subscriptions are separate classes with their own limits, rather than an
-enum plus branching, so adding a tier means adding a class.
+- Free, Student and Premium are separate classes with their own limits
+- No enum plus branching — adding a tier means adding a class
+- Limits are enforced in the business layer, not in the templates
 
-### CRUD from the browser
+### ✏️ CRUD from the browser
 
-Songs and playlists can be created, edited and deleted from the web interface, and songs can be
-attached to a playlist from its detail page.
+- Songs and playlists can be created, edited and deleted from the web interface
+- Songs are attached to a playlist from its detail page
+- The same operations are available over the REST API
 
-### CLI for the data lifecycle
+### 🖥 CLI for the data lifecycle
 
-`cli.py` initialises the schema, imports the bundled dataset of 139 tracks, prints statistics and
-clears the database, which keeps setup out of the application code.
+- `init-db` creates the schema
+- `import-csv` loads the bundled dataset of 139 tracks, deduplicating users
+- `stats` prints totals and the subscription breakdown
+- `clean` drops all data
+- Setup lives here instead of leaking into the application code
 
 ---
 
