@@ -2,19 +2,17 @@
 
 """Presentation Layer - FastAPI routes"""
 
-from fastapi import APIRouter, Depends, HTTPException, File, UploadFile, Request, Form
-from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.templating import Jinja2Templates
 from pathlib import Path
+
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile
+from fastapi.responses import RedirectResponse
+from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-from src.dal import get_db, DataAccessService
+
 from src.bll import SpotifyService, StatisticsService
 from src.common.logger import get_logger
+from src.dal import DataAccessService, get_db
 from src.pl.schemas import (
-    UserResponse,
-    SongResponse,
-    PlaylistSummary,
-    StatisticsResponse,
     ImportResponse,
 )
 
@@ -417,8 +415,8 @@ async def import_csv(
     CSV format: email, subType, playlistName, songTitle, artist, duration, genre
     """
     try:
-        import tempfile
         import os
+        import tempfile
 
         # Save uploaded file temporarily
         with tempfile.NamedTemporaryFile(delete=False, suffix=".csv") as tmp:

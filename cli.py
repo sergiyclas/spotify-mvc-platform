@@ -1,17 +1,15 @@
 # cli.py
 """Utility scripts for the Spotify application"""
+import asyncio
 import os
 import sys
-import asyncio
-from pathlib import Path
 
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from sqlalchemy.orm import Session
-from src.dal import SessionLocal, init_db, DataAccessService
 from src.bll import SpotifyService
 from src.common.logger import get_logger
+from src.dal import DataAccessService, SessionLocal, init_db
 
 logger = get_logger(__name__)
 
@@ -42,14 +40,14 @@ def show_statistics():
     db = SessionLocal()
     try:
         # Import after database is initialized
-        from src.dal import User, Song, Playlist
+        from src.dal import Playlist, Song, User
         
         users = db.query(User).all()
         songs = db.query(Song).all()
         playlists = db.query(Playlist).all()
         
         print(f"\n{'='*50}")
-        print(f"Database Statistics")
+        print("Database Statistics")
         print(f"{'='*50}")
         print(f"Total Users: {len(users)}")
         print(f"Total Songs: {len(songs)}")
@@ -61,7 +59,7 @@ def show_statistics():
             sub_type = user.subscription.type
             subscriptions[sub_type] = subscriptions.get(sub_type, 0) + 1
         
-        print(f"\nSubscription Breakdown:")
+        print("\nSubscription Breakdown:")
         for sub_type, count in subscriptions.items():
             print(f"  {sub_type}: {count}")
         

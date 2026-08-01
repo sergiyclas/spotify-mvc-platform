@@ -2,14 +2,16 @@
 
 """Main FastAPI application"""
 
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from pathlib import Path
-from config import API_TITLE, API_VERSION, API_DESCRIPTION
-from src.dal import init_db
-from src.pl import router, api_router
+
+from config import API_DESCRIPTION, API_TITLE, API_VERSION
 from src.common.logger import get_logger
+from src.dal import init_db
+from src.pl import api_router, router
 
 logger = get_logger(__name__)
 

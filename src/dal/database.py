@@ -4,7 +4,8 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
-from config import DATABASE_URL, DATABASE_ECHO
+
+from config import DATABASE_ECHO, DATABASE_URL
 
 # Create engine
 engine = create_engine(

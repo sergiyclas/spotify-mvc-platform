@@ -3,19 +3,21 @@
 """Data Access Layer - Repository implementation"""
 
 from datetime import datetime
-from typing import Optional, List
-from sqlalchemy.orm import Session
+from typing import List, Optional
+
 from sqlalchemy import and_
-from src.dal.models import (
-    User,
-    Song,
-    Playlist,
-    Subscription,
-    FreeSubscription,
-    PremiumSubscription,
-    StudentSubscription,
-)
+from sqlalchemy.orm import Session
+
 from src.common.logger import get_logger
+from src.dal.models import (
+    FreeSubscription,
+    Playlist,
+    PremiumSubscription,
+    Song,
+    StudentSubscription,
+    Subscription,
+    User,
+)
 
 logger = get_logger(__name__)
 

@@ -3,17 +3,17 @@
 Main entry point for the Spotify application
 Run with: python main.py
 """
-import sys
 import os
-import asyncio
+import sys
 
 # Add src directory to Python path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import uvicorn
-from src.main import app
+
 from src.common.logger import get_logger
 from src.dal import init_db
+from src.main import app
 
 logger = get_logger(__name__)
 

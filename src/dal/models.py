@@ -3,8 +3,10 @@
 """SQLAlchemy entity models for Spotify application"""
 
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey, Table
+
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import relationship
+
 from src.dal.database import Base
 
 # Association table for Many-to-Many relationship between Playlist and Song
