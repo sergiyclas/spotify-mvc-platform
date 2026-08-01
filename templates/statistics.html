@@ -2,40 +2,40 @@
 
 {% extends "base.html" %}
 
-{% block title %}Статистика - Spotify Platform{% endblock %}
+{% block title %}Statistics - Spotify Platform{% endblock %}
 
 {% block content %}
 <div class="page-header">
-    <h2>📊 Статистика платформи</h2>
+    <h2>📊 Platform statistics</h2>
 </div>
 
 <div class="stats-grid-large">
     <div class="stat-card-large">
-        <h3>👥 Користувачів</h3>
+        <h3>👥 Users</h3>
         <p class="stat-number">{{ stats.total_users }}</p>
     </div>
     <div class="stat-card-large">
-        <h3>🎵 Пісень</h3>
+        <h3>🎵 Songs</h3>
         <p class="stat-number">{{ stats.total_songs }}</p>
     </div>
     <div class="stat-card-large">
-        <h3>📋 Плейлистів</h3>
+        <h3>📋 Playlists</h3>
         <p class="stat-number">{{ stats.total_playlists }}</p>
     </div>
     <div class="stat-card-large">
-        <h3>🔗 Пісень у плейлістах</h3>
+        <h3>🔗 Songs in playlists</h3>
         <p class="stat-number">{{ stats.total_playlist_songs }}</p>
     </div>
 </div>
 
 {% if stats.subscriptions %}
 <div class="section">
-    <h3>📱 Розподіл за типами підписки</h3>
+    <h3>📱 Subscriptions by type</h3>
     <div class="subscription-stats">
         {% for sub_type, count in stats.subscriptions.items() %}
         <div class="sub-stat">
             <span class="sub-type">{{ sub_type }}</span>
-            <span class="sub-count">{{ count }} користувачів</span>
+            <span class="sub-count">{{ count }} users</span>
             <div class="progress-bar">
                 <div class="progress" style="width: {{ (count / stats.total_users * 100) | round }}%"></div>
             </div>
@@ -47,8 +47,8 @@
 
 {% if stats.average_playlist_size %}
 <div class="section">
-    <h3>📈 Середня величина плейлісту</h3>
-    <p>{{ stats.average_playlist_size | round(2) }} пісень на плейліст</p>
+    <h3>📈 Average playlist size</h3>
+    <p>{{ stats.average_playlist_size | round(2) }} songs per playlist</p>
 </div>
 {% endif %}
 

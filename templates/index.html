@@ -2,36 +2,36 @@
 
 {% extends "base.html" %}
 
-{% block title %}Головна - Spotify Platform{% endblock %}
+{% block title %}Home - Spotify Platform{% endblock %}
 
 {% block content %}
 <div class="hero">
-    <h2>Ласкаво просимо до Spotify Platform</h2>
-    <p>Керуйте музичною колекцією ваших користувачів, пісн ями та плейлистами</p>
+    <h2>Welcome to Spotify Platform</h2>
+    <p>Manage the music collection of your users, songs and playlists</p>
     <div class="hero-buttons">
-        <a href="/songs" class="btn btn-primary">Переглянути пісні</a>
-        <a href="/playlists" class="btn btn-primary">Переглянути плейлисти</a>
-        <a href="/statistics" class="btn btn-secondary">Статистика</a>
+        <a href="/songs" class="btn btn-primary">Browse songs</a>
+        <a href="/playlists" class="btn btn-primary">Browse playlists</a>
+        <a href="/statistics" class="btn btn-secondary">Statistics</a>
     </div>
 </div>
 
 <div class="quick-stats">
-    <h3>Швидка статистика</h3>
+    <h3>At a glance</h3>
     <div class="stats-grid">
         <div class="stat-card">
-            <h4>Користувачів</h4>
+            <h4>Users</h4>
             <p class="stat-number">{{ total_users }}</p>
         </div>
         <div class="stat-card">
-            <h4>Пісень</h4>
+            <h4>Songs</h4>
             <p class="stat-number">{{ total_songs }}</p>
         </div>
         <div class="stat-card">
-            <h4>Плейлистів</h4>
+            <h4>Playlists</h4>
             <p class="stat-number">{{ total_playlists }}</p>
         </div>
         <div class="stat-card">
-            <h4>К-сть типів підписки</h4>
+            <h4>Subscription types</h4>
             <p class="stat-number">{{ total_subscriptions }}</p>
         </div>
     </div>

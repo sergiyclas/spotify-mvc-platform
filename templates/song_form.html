@@ -2,11 +2,11 @@
 
 {% extends "base.html" %}
 
-{% block title %}{% if song %}Редагувати пісню{% else %}Додати пісню{% endif %} - Spotify Platform{% endblock %}
+{% block title %}{% if song %}Edit song{% else %}Add song{% endif %} - Spotify Platform{% endblock %}
 
 {% block content %}
 <div class="page-header">
-    <h2>{% if song %}✏️ Редагувати пісню{% else %}➕ Додати нову пісню{% endif %}</h2>
+    <h2>{% if song %}✏️ Edit song{% else %}➕ Add a song{% endif %}</h2>
 </div>
 
 {% if errors %}
@@ -22,26 +22,26 @@
 <div class="form-container">
     <form method="POST" class="form">
         <div class="form-group">
-            <label for="title">Назва пісні *</label>
+            <label for="title">Song title *</label>
             <input 
                 type="text" 
                 id="title" 
                 name="title" 
                 class="form-control" 
-                placeholder="Введіть назву пісні"
+                placeholder="Enter the song title"
                 value="{{ song.title if song else '' }}"
                 required
             >
         </div>
 
         <div class="form-group">
-            <label for="artist">Виконавець *</label>
+            <label for="artist">Artist *</label>
             <input 
                 type="text" 
                 id="artist" 
                 name="artist" 
                 class="form-control" 
-                placeholder="Введіть ім'я виконавця"
+                placeholder="Enter the artist name"
                 value="{{ song.artist if song else '' }}"
                 required
             >
@@ -49,13 +49,13 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label for="duration">Тривалість (мілісекунди) *</label>
+                <label for="duration">Duration (milliseconds) *</label>
                 <input 
                     type="number" 
                     id="duration" 
                     name="duration" 
                     class="form-control" 
-                    placeholder="Введіть тривалість"
+                    placeholder="Enter the duration"
                     value="{{ song.duration if song else '' }}"
                     required
                     min="0"
@@ -63,13 +63,13 @@
             </div>
 
             <div class="form-group">
-                <label for="genre">Жанр</label>
+                <label for="genre">Genre</label>
                 <input 
                     type="text" 
                     id="genre" 
                     name="genre" 
                     class="form-control" 
-                    placeholder="Введіть жанр (опціонально)"
+                    placeholder="Enter a genre (optional)"
                     value="{{ song.genre if song else '' }}"
                 >
             </div>
@@ -77,9 +77,9 @@
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">
-                {% if song %}Зберегти зміни{% else %}Додати пісню{% endif %}
+                {% if song %}Save changes{% else %}Add song{% endif %}
             </button>
-            <a href="/songs" class="btn btn-secondary">Скасувати</a>
+            <a href="/songs" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>

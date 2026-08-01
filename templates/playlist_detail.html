@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="page-header">
-    <a href="/playlists" class="btn btn-secondary" style="margin-bottom: 1rem;">← Повернутися</a>
+    <a href="/playlists" class="btn btn-secondary" style="margin-bottom: 1rem;">← Back</a>
     <h2>📋 {{ playlist.name }}</h2>
 </div>
 
@@ -18,24 +18,24 @@
 
 <div class="playlist-info">
     <span class="info-item">ID: {{ playlist.id }}</span>
-    <span class="info-item">Власник: {{ playlist.owner_id }}</span>
-    <span class="info-item">Пісень: {{ playlist.songs | length }}</span>
-    <span class="info-item">Створено: {{ playlist.created_at }}</span>
+    <span class="info-item">Owner: {{ playlist.owner_id }}</span>
+    <span class="info-item">Songs: {{ playlist.songs | length }}</span>
+    <span class="info-item">Created: {{ playlist.created_at }}</span>
 </div>
 
 {% if songs %}
 <div class="section">
-    <h3>🎵 Пісні в плейлісті</h3>
+    <h3>🎵 Songs in this playlist</h3>
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Назва</th>
-                    <th>Виконавець</th>
-                    <th>Тривалість</th>
-                    <th>Жанр</th>
-                    <th>Дія</th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Duration</th>
+                    <th>Genre</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +48,7 @@
                     <td>{{ song.genre or '-' }}</td>
                     <td>
                         <form method="POST" action="/playlists/{{ playlist.id }}/songs/{{ song.id }}/remove" style="display: inline;">
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Видалити пісню?')">Видалити</button>
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this song?')">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -59,12 +59,12 @@
 </div>
 
 <div class="section">
-    <h3>➕ Додати пісню до плейлісту</h3>
+    <h3>➕ Add a song to the playlist</h3>
     <form method="POST" action="/playlists/{{ playlist.id }}/add-song" class="form">
         <div class="form-group">
-            <label for="song_id">Виберіть пісню:</label>
+            <label for="song_id">Select a song:</label>
             <select id="song_id" name="song_id" class="form-control" required>
-                <option value="">-- Виберіть пісню --</option>
+                <option value="">-- Select a song --</option>
                 {% for available_song in available_songs %}
                 <option value="{{ available_song.id }}">
                     {{ available_song.title }} - {{ available_song.artist }}
@@ -72,19 +72,19 @@
                 {% endfor %}
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Додати пісню</button>
+        <button type="submit" class="btn btn-primary">Add song</button>
     </form>
 </div>
 {% else %}
 <div class="empty-state">
-    <p>Плейліст порожній. Додайте пісні до плейлісту.</p>
+    <p>This playlist is empty. Add a song to it.</p>
 </div>
 {% endif %}
 
 <div class="action-buttons" style="margin-top: 2rem;">
-    <a href="/playlists/{{ playlist.id }}/edit" class="btn btn-warning">✏️ Редагувати плейліст</a>
+    <a href="/playlists/{{ playlist.id }}/edit" class="btn btn-warning">✏️ Edit playlist</a>
     <form method="POST" action="/playlists/{{ playlist.id }}/delete" style="display: inline;">
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Видалити плейліст?')">🗑️ Видалити плейліст</button>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this playlist?')">🗑️ Delete playlist</button>
     </form>
 </div>
 

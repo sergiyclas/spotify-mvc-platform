@@ -2,12 +2,12 @@
 
 {% extends "base.html" %}
 
-{% block title %}Плейлисти - Spotify Platform{% endblock %}
+{% block title %}Playlists - Spotify Platform{% endblock %}
 
 {% block content %}
 <div class="page-header">
-    <h2>📋 Плейлисти</h2>
-    <a href="/playlists/create" class="btn btn-primary">➕ Створити плейліст</a>
+    <h2>📋 Playlists</h2>
+    <a href="/playlists/create" class="btn btn-primary">➕ Create playlist</a>
 </div>
 
 {% if message %}
@@ -28,18 +28,18 @@
             {% if playlist.description %}
             <p class="description">{{ playlist.description }}</p>
             {% else %}
-            <p class="description empty">Немає опису</p>
+            <p class="description empty">No description</p>
             {% endif %}
             <div class="playlist-stats">
-                <span class="stat">🎵 {{ playlist.song_count }} пісень</span>
-                <span class="stat">👤 Власник: {{ playlist.owner_id }}</span>
+                <span class="stat">🎵 {{ playlist.song_count }} songs</span>
+                <span class="stat">👤 Owner: {{ playlist.owner_id }}</span>
             </div>
         </div>
         <div class="card-footer">
-            <a href="/playlists/{{ playlist.id }}" class="btn btn-sm btn-info">👁️ Переглянути</a>
-            <a href="/playlists/{{ playlist.id }}/edit" class="btn btn-sm btn-warning">✏️ Редагувати</a>
+            <a href="/playlists/{{ playlist.id }}" class="btn btn-sm btn-info">👁️ View</a>
+            <a href="/playlists/{{ playlist.id }}/edit" class="btn btn-sm btn-warning">✏️ Edit</a>
             <form method="POST" action="/playlists/{{ playlist.id }}/delete" style="display: inline;">
-                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Ви впевнені?')">🗑️ Видалити</button>
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">🗑️ Delete</button>
             </form>
         </div>
     </div>
@@ -47,11 +47,11 @@
 </div>
 
 <div class="pagination">
-    <p>Всього плейлистів: <strong>{{ playlists | length }}</strong></p>
+    <p>Total playlists: <strong>{{ playlists | length }}</strong></p>
 </div>
 {% else %}
 <div class="empty-state">
-    <p>Плейлисти не знайдені. <a href="/playlists/create">Створіть перший плейліст</a></p>
+    <p>No playlists found. <a href="/playlists/create">Create the first playlist</a></p>
 </div>
 {% endif %}
 {% endblock %}

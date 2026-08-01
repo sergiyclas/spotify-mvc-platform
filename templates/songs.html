@@ -2,12 +2,12 @@
 
 {% extends "base.html" %}
 
-{% block title %}Пісні - Spotify Platform{% endblock %}
+{% block title %}Songs - Spotify Platform{% endblock %}
 
 {% block content %}
 <div class="page-header">
-    <h2>🎵 Пісні</h2>
-    <a href="/songs/create" class="btn btn-primary">➕ Додати пісню</a>
+    <h2>🎵 Songs</h2>
+    <a href="/songs/create" class="btn btn-primary">➕ Add song</a>
 </div>
 
 {% if message %}
@@ -22,11 +22,11 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Назва</th>
-                <th>Виконавець</th>
-                <th>Тривалість (мс)</th>
-                <th>Жанр</th>
-                <th>Дії</th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Duration (ms)</th>
+                <th>Genre</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -38,9 +38,9 @@
                 <td>{{ (song.duration / 1000) | round(2) }}s</td>
                 <td>{{ song.genre or '-' }}</td>
                 <td class="actions">
-                    <a href="/songs/{{ song.id }}/edit" class="btn btn-sm btn-warning">✏️ Редагувати</a>
+                    <a href="/songs/{{ song.id }}/edit" class="btn btn-sm btn-warning">✏️ Edit</a>
                     <form method="POST" action="/songs/{{ song.id }}/delete" style="display: inline;">
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Ви впевнені?')">🗑️ Видалити</button>
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">🗑️ Delete</button>
                     </form>
                 </td>
             </tr>
@@ -50,11 +50,11 @@
 </div>
 
 <div class="pagination">
-    <p>Всього пісень: <strong>{{ songs | length }}</strong></p>
+    <p>Total songs: <strong>{{ songs | length }}</strong></p>
 </div>
 {% else %}
 <div class="empty-state">
-    <p>Пісні не знайдені. <a href="/songs/create">Додайте першу пісню</a></p>
+    <p>No songs found. <a href="/songs/create">Add the first song</a></p>
 </div>
 {% endif %}
 {% endblock %}

@@ -2,11 +2,11 @@
 
 {% extends "base.html" %}
 
-{% block title %}{% if playlist %}Редагувати плейліст{% else %}Створити плейліст{% endif %} - Spotify Platform{% endblock %}
+{% block title %}{% if playlist %}Edit playlist{% else %}Create playlist{% endif %} - Spotify Platform{% endblock %}
 
 {% block content %}
 <div class="page-header">
-    <h2>{% if playlist %}✏️ Редагувати плейліст{% else %}➕ Створити новий плейліст{% endif %}</h2>
+    <h2>{% if playlist %}✏️ Edit playlist{% else %}➕ Create a playlist{% endif %}</h2>
 </div>
 
 {% if errors %}
@@ -22,50 +22,50 @@
 <div class="form-container">
     <form method="POST" class="form">
         <div class="form-group">
-            <label for="name">Назва плейлісту *</label>
+            <label for="name">Playlist name *</label>
             <input 
                 type="text" 
                 id="name" 
                 name="name" 
                 class="form-control" 
-                placeholder="Введіть назву плейлісту"
+                placeholder="Enter the playlist name"
                 value="{{ playlist.name if playlist else '' }}"
                 required
             >
         </div>
 
         <div class="form-group">
-            <label for="description">Опис</label>
+            <label for="description">Description</label>
             <textarea 
                 id="description" 
                 name="description" 
                 class="form-control" 
-                placeholder="Введіть опис плейлісту (опціонально)"
+                placeholder="Enter a description (optional)"
                 rows="4"
             >{{ playlist.description if playlist else '' }}</textarea>
         </div>
 
         {% if not playlist %}
         <div class="form-group">
-            <label for="owner_id">Власник (User ID) *</label>
+            <label for="owner_id">Owner (user id) *</label>
             <input 
                 type="number" 
                 id="owner_id" 
                 name="owner_id" 
                 class="form-control" 
-                placeholder="Введіть ID власника"
+                placeholder="Enter the owner id"
                 required
                 min="1"
             >
-            <small>Виберіть ID користувача, якому належатиме плейліст</small>
+            <small>Pick the user id that will own the playlist</small>
         </div>
         {% endif %}
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">
-                {% if playlist %}Зберегти зміни{% else %}Створити плейліст{% endif %}
+                {% if playlist %}Save changes{% else %}Create playlist{% endif %}
             </button>
-            <a href="/playlists" class="btn btn-secondary">Скасувати</a>
+            <a href="/playlists" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>
