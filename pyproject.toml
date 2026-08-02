@@ -1,12 +1,12 @@
 [project]
-name = "spotify-lab"
+name = "spotify-mvc-platform"
 version = "1.0.0"
-description = "Spotify Documentation Lab - Music Platform Management System"
+description = "Music platform management system built on a layered MVC architecture"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Documentation Lab", email = "lab@example.com"}
+    {name = "Serhiy Dzen"}
 ]
 
 dependencies = [
@@ -23,20 +23,5 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.4.0",
-    "black>=23.0.0",
-    "isort>=5.12.0",
-    "flake8>=6.0.0",
+    "ruff>=0.14",
 ]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py", "*_test.py"]
-
-[tool.black]
-line-length = 100
-target-version = ["py310"]
-
-[tool.isort]
-profile = "black"
-line_length = 100
