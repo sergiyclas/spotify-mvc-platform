@@ -7,6 +7,7 @@
 Users, songs, playlists and subscriptions, served through Jinja2 pages and an OpenAPI-documented
 API over the same service layer, with a CLI for data import and statistics.
 
+[![Lint](https://github.com/sergiyclas/spotify-mvc-platform/actions/workflows/lint.yml/badge.svg)](https://github.com/sergiyclas/spotify-mvc-platform/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 
